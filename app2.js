@@ -1,10 +1,11 @@
 async function getFood() {
+    try {
+        const response = await fetch("https://dog.ceo/api/breeds/image/random");
+        const data = await response.json();
 
-   let result = await fetch('https://foodish-api.com/api/');
-   let finalresult = await result.json();
-   let image = finalresult.image;
-
-   document.getElementById('container').innerHTML =
-       "<img src='" + image + "' width='300'>";
-
+        document.getElementById("container").innerHTML =
+            `<img src="${data.message}" width="300">`;
+    } catch (error) {
+        console.error(error);
+    }
 }
